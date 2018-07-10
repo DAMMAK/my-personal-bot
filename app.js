@@ -809,6 +809,7 @@ function receivedPostback(event) {
 
 
             var user = getUser(senderID);
+            console.log(user);
             let display_message = 'Hola ' + user.first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?';
             let replies = [{
                     "content_type": "text",
