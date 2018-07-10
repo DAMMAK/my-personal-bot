@@ -704,7 +704,7 @@ function greetUserText(userId) {
                 console.log("FB user: %s %s, %s",
                     user.first_name, user.last_name, user.gender);
 
-                sendTextMessage(userId, 'Hola ' + user_full_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?');
+                sendTextMessage(userId, 'Hola ' + user_first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?');
             } else {
                 console.log("Cannot get data for fb user with id",
                     userId);
