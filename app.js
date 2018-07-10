@@ -783,7 +783,7 @@ function receivedPostback(event) {
             greetUserText(senderID);
             break;
 
-        case "WHO_ARETOU":
+        case "WHO_ARE_YOU":
 
 
             var message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
