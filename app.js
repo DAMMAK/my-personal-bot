@@ -796,7 +796,7 @@ function receivedPostback(event) {
                 }
             ];
 
-            sendQuickReply(sender, responseText, replies);
+            sendQuickReply(senderID, responseText, replies);
             //greetUserText(senderID);
             break;
 
