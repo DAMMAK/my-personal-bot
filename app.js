@@ -231,6 +231,11 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
             //     break;
 
+        case "who-are-you":
+
+            sendTypingOn(sender);
+            sendTextMessage(sender, "Testing Action Response");
+            break;
         default:
             //unhandled action, just send back the text
             sendTextMessage(sender, responseText);
