@@ -769,27 +769,27 @@ function receivedPostback(event) {
 
             break;
 
-            // case "¿Que eres?":
-            //     let message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+        case "¿Que eres?":
+            let msg1 = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
 
-            //     let button = [{
-            //         "type": "web_url",
-            //         "url": "https://www.mediakia.com/quienes-somos/",
-            //         "title": "¡Quién soy!",
-            //         "webview_height_ratio": "full"
-            //     }];
+            let button1 = [{
+                "type": "web_url",
+                "url": "https://www.mediakia.com/quienes-somos/",
+                "title": "¡Quién soy!",
+                "webview_height_ratio": "full"
+            }];
 
-            //     sendButtonMessage(senderID, message, button);
+            sendButtonMessage(senderID, msg1, button1);
 
-            //     break;
+            break;
 
-            // case "Me las apaño bien, ¡gracias!":
+        case "Me las apaño bien, ¡gracias!":
 
-            //     let message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+            let msg2 = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
 
-            //     sendTextMessage(senderID, message);
+            sendTextMessage(senderID, msg2);
 
-            //     break;
+            break;
 
         default:
             //unindentified payload
