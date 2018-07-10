@@ -756,7 +756,7 @@ function receivedPostback(event) {
 
         case "¿Cómo contrato vuestros servicios?":
 
-            var message = "¡Fácil! Puedes contactar con nosotros a través del apartado Contacto de nuestra página y un colega humano se pondrá en contacto contigo muy pronto"
+            let message = "¡Fácil! Puedes contactar con nosotros a través del apartado Contacto de nuestra página y un colega humano se pondrá en contacto contigo muy pronto";
 
             let button = [{
                 "type": "web_url",
@@ -770,7 +770,7 @@ function receivedPostback(event) {
             break;
 
         case "¿Que eres?":
-            var message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+            let message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
 
             let button = [{
                 "type": "web_url",
@@ -785,7 +785,7 @@ function receivedPostback(event) {
 
         case "Me las apaño bien, ¡gracias!":
 
-            var message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+            let message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
 
             sendTextMessage(senderID, message);
 
