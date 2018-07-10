@@ -194,7 +194,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                 {
                     "content_type": "text",
                     "title": "¿Quiénes sois?",
-                    "payload": "¿Quiénes sois?",
+                    "payload": "WHO_ARE_YOU",
                 },
 
                 {
@@ -780,6 +780,23 @@ function receivedPostback(event) {
 
         case "GET_STARTED":
             greetUserText(senderID);
+            break;
+
+        case "WHO_ARETOU":
+
+
+            var message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+            sendTypingOn();
+
+            let button = [{
+                "type": "web_url",
+                "url": "https://www.mediakia.com/quienes-somos/",
+                "title": "quienes somos",
+                "webview_height_ratio": "full"
+            }];
+
+            sendButtonMessage(senderID, message, button);
+
             break;
 
         default:
