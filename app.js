@@ -777,7 +777,7 @@ function receivedPostback(event) {
         //     break;
 
         case "GET_STARTED":
-            greetUserText(senderID);
+
             let replies = [{
                     "content_type": "text",
                     "title": "¿Qué servicios tenéis para mí?",
@@ -797,6 +797,7 @@ function receivedPostback(event) {
             ];
 
             sendQuickReply(sender, responseText, replies);
+            //greetUserText(senderID);
             break;
 
         case "¿Cómo contrato vuestros servicios?":
