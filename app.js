@@ -205,6 +205,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             ];
 
             sendQuickReply(sender, responseText, replies);
+            console.log(replies);
 
             break;
             // case "your.service":
