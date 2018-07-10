@@ -207,8 +207,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             sendQuickReply(sender, responseText, replies);
 
             break;
-        case "your.service":
-            sender_action();
+        case "your.service.message":
+            //sender_action();
             let textMessage = 'Veo que has estado echando un ojo a nuestro listado de servicios. Espero que te hayan parecido interesantes 😊 Si puedo hacer algo más por ti, no dudes en pedírmelo.';
 
             sendTextMessage(sender, textMessage);
