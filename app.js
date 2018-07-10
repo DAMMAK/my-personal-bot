@@ -209,9 +209,29 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             break;
         case "your.service":
             //sender_action();
+            sendTextMessage(sender, responseText);
             sendTypingOn(sender);
-            let textMessage = 'Veo que has estado echando un ojo a nuestro listado de servicios. Espero que te hayan parecido interesantes 😊 Si puedo hacer algo más por ti, no dudes en pedírmelo.';
-            sendTextMessage(sender, textMessage);
+
+            setTimeout(() =>
+
+                {
+
+                    let buttons = [{
+                            type = "postback",
+                            title = "Continue",
+                            payload = "Continue"
+
+                        },
+                        {
+                            type = "postback",
+                            title = "Exit",
+                            payload = "Exit"
+
+                        }
+                    ];
+                    sendButtonMessage(sender, 'What would you like to do next?');
+                }, 3000);
+
 
             break;
 
