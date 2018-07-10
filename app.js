@@ -738,6 +738,27 @@ function getUser(userId) {
                     user.first_name, user.last_name, user.gender);
 
 
+                let display_message = 'Hola ' + user.first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?';
+                let replies = [{
+                        "content_type": "text",
+                        "title": "¿Qué servicios tenéis para mí?",
+                        "payload": "¿Qué servicios tenéis para mí?",
+                    },
+                    {
+                        "content_type": "text",
+                        "title": "¿Quiénes sois?",
+                        "payload": "¿Quiénes sois?",
+                    },
+
+                    {
+                        "content_type": "text",
+                        "title": "Me las apaño bien, ¡gracias!",
+                        "payload": "Me las apaño bien, ¡gracias!",
+                    }
+                ];
+
+                sendQuickReply(userId, display_message, replies);
+
             } else {
                 console.log("Cannot get data for fb user with id",
                     userId);
@@ -809,29 +830,7 @@ function receivedPostback(event) {
 
         case "GET_STARTED":
 
-
-            var user = getUser(senderID);
-            console.log('ErrOR FROM GET STARTED: ', user);
-            let display_message = 'Hola ' + user.first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?';
-            let replies = [{
-                    "content_type": "text",
-                    "title": "¿Qué servicios tenéis para mí?",
-                    "payload": "¿Qué servicios tenéis para mí?",
-                },
-                {
-                    "content_type": "text",
-                    "title": "¿Quiénes sois?",
-                    "payload": "¿Quiénes sois?",
-                },
-
-                {
-                    "content_type": "text",
-                    "title": "Me las apaño bien, ¡gracias!",
-                    "payload": "Me las apaño bien, ¡gracias!",
-                }
-            ];
-
-            sendQuickReply(senderID, display_message, replies);
+            getUser(senderID);
             //greetUserText(senderID);
             break;
 
