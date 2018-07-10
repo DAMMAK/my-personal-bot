@@ -207,13 +207,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             sendQuickReply(sender, responseText, replies);
 
             break;
-        case "your.service.message":
+        case "your.service":
             //sender_action();
+            sendTypingOn(sender);
             let textMessage = 'Veo que has estado echando un ojo a nuestro listado de servicios. Espero que te hayan parecido interesantes 😊 Si puedo hacer algo más por ti, no dudes en pedírmelo.';
-
             sendTextMessage(sender, textMessage);
 
             break;
+
         default:
             //unhandled action, just send back the text
             sendTextMessage(sender, responseText);
