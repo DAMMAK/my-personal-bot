@@ -212,25 +212,21 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             sendTextMessage(sender, responseText);
             sendTypingOn(sender);
 
-            setTimeout(() =>
+            setTimeout(() => {
+                let buttons = [{
+                        type: "postback",
+                        title: "Continue",
+                        payload: "Continue"
+                    },
+                    {
+                        type: "postback",
+                        title: "Exit",
+                        payload: "Exit"
 
-                {
-
-                    let buttons = [{
-                            type = "postback",
-                            title = "Continue",
-                            payload = "Continue"
-
-                        },
-                        {
-                            type = "postback",
-                            title = "Exit",
-                            payload = "Exit"
-
-                        }
-                    ];
-                    sendButtonMessage(sender, 'What would you like to do next?');
-                }, 3000);
+                    }
+                ];
+                sendButtonMessage(sender, 'What would you like to do next?');
+            }, 3000);
 
 
             break;
