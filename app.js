@@ -719,6 +719,35 @@ function greetUserText(userId) {
     });
 }
 
+function getUser(userId) {
+    //first read user firstname
+    request({
+        uri: 'https://graph.facebook.com/v2.7/' + userId,
+        qs: {
+            access_token: config.FB_PAGE_TOKEN
+        }
+
+    }, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+
+            var user = JSON.parse(body);
+
+            if (user.first_name) {
+                console.log("FB user: %s %s, %s",
+                    user.first_name, user.last_name, user.gender);
+                return user;
+
+            } else {
+                console.log("Cannot get data for fb user with id",
+                    userId);
+            }
+        } else {
+            console.error(response.error);
+        }
+
+    });
+}
+
 /*
  * Call the Send API. The message data goes in the body. If successful, we'll 
  * get the message id in a response 
@@ -778,6 +807,8 @@ function receivedPostback(event) {
 
         case "GET_STARTED":
 
+
+            var user = getUser(senderID);
             let display_message = 'Hola ' + user.first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?';
             let replies = [{
                     "content_type": "text",
