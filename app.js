@@ -212,7 +212,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             let textMessage = 'Veo que has estado echando un ojo a nuestro listado de servicios. Espero que te hayan parecido interesantes 😊 Si puedo hacer algo más por ti, no dudes en pedírmelo.';
             setTimeout(() => {
                 sendTextMessage(sender, textMessage);
-            }, 120000)
+            }, 120000);
             break;
         default:
             //unhandled action, just send back the text
