@@ -208,6 +208,32 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             console.log(replies);
 
             break;
+
+        case "who-are-you":
+
+            let msg3 = "Veo que has estado leyendo un poco sobre nosotros 😊. Si puedo hacer algo más por ti, no dudes en pedírmelo";
+            let button2 = [{
+                    "type": "postback",
+                    "title": "¿Qué servicios tenéis para mí?",
+                    "payload": "¿Qué servicios puedes ofrecer?"
+                },
+                {
+                    "type": "postback",
+                    "title": "¿Cómo contrato vuestros servicios?",
+                    "payload": "¿Qué servicios tenéis para mí?"
+                },
+                {
+                    "type": "postback",
+                    "title": "Me las apaño bien, ¡gracias!",
+                    "payload": "Me las apaño bien, ¡gracias!"
+                }
+            ];
+
+            sendButtonMessage(sender, msg3, button2);
+
+
+            break;
+
         default:
             //unhandled action, just send back the text
             sendTextMessage(sender, responseText);
@@ -790,6 +816,8 @@ function receivedPostback(event) {
             sendTextMessage(senderID, msg2);
 
             break;
+
+
 
         default:
             //unindentified payload
