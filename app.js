@@ -189,7 +189,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             let replies = [{
                     "content_type": "text",
                     "title": "¿Qué servicios tenéis para mí?",
-                    "payload": "¿Qué servicios tenéis para mí?",
+                    "payload": "OUR_SERVICE",
                 },
                 {
                     "content_type": "text",
@@ -704,7 +704,7 @@ function greetUserText(userId) {
                 console.log("FB user: %s %s, %s",
                     user.first_name, user.last_name, user.gender);
 
-                sendTextMessage(userId, `Hola ${user_full_name}, ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?`);
+                sendTextMessage(userId, 'Hola ' + user_full_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?');
             } else {
                 console.log("Cannot get data for fb user with id",
                     userId);
@@ -767,23 +767,24 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
-        case "¿Qué servicios tenéis para mí? ":
-            sendTypingOn();
-            var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
-            let button = [
+        case "OUR_SERVICE":
+            // sendTypingOn();
+            // var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
+            // let button = [
 
-                {
-                    type: "web_url",
-                    url: "https://www.mediakia.com/servicios/",
-                    title: "Nuestro servicio"
-                }
-            ];
+            //     {
+            //         type: "web_url",
+            //         url: "https://www.mediakia.com/servicios/",
+            //         title: "Nuestro servicio"
+            //     }
+            // ];
 
             // sendButtonMessage(sender, message, button);
+            var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
             sendTextMessage(senderID, message);
             break;
 
-        case 'GET_STARTED':
+        case "GET_STARTED":
             greetUserText(senderID);
             break;
 
