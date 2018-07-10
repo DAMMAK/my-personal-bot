@@ -208,18 +208,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             console.log(replies);
 
             break;
-
-        case "our-service":
-
-            let msg = "Coming after the test of phase one";
-            sendTextMessage(sender, msg);
-            break;
-
-        case "who-are-you":
-
-            sendTypingOn(sender);
-            sendTextMessage(sender, "Testing Action Response");
-            break;
         default:
             //unhandled action, just send back the text
             sendTextMessage(sender, responseText);
@@ -764,6 +752,21 @@ function receivedPostback(event) {
 
         case "GET_STARTED":
             greetUserText(senderID);
+            break;
+
+        case "¿Cómo contrato vuestros servicios?":
+
+            var message = "¡Fácil! Puedes contactar con nosotros a través del apartado Contacto de nuestra página y un colega humano se pondrá en contacto contigo muy pronto"
+
+            let button = [{
+                "type": "web_url",
+                "url": "https://www.mediakia.com/servicios/",
+                "title": "Nuestro servicio",
+                "webview_height_ratio": "full"
+            }];
+
+            sendButtonMessage(senderID, message, button);
+
             break;
 
         default:
