@@ -208,29 +208,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             console.log(replies);
 
             break;
-            // case "your.service":
-            //     //sender_action();
-            //     sendTextMessage(sender, responseText);
-            //     sendTypingOn(sender);
 
-            //     setTimeout(() => {
-            //         let buttons = [{
-            //                 type: "postback",
-            //                 title: "Continue",
-            //                 payload: "Continue"
-            //             },
-            //             {
-            //                 type: "postback",
-            //                 title: "Exit",
-            //                 payload: "Exit"
+        case "our-service":
 
-            //             }
-            //         ];
-            //         sendButtonMessage(sender, 'What would you like to do next?', buttons);
-            //     }, 3000)
-
-
-            //     break;
+            let msg = "Coming after the test of phase one";
+            sendTextMessage(sender, msg);
+            break;
 
         case "who-are-you":
 
