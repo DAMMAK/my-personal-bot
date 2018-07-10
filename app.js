@@ -357,7 +357,7 @@ function handleApiAiResponse(sender, response) {
     } else if (responseText == '' && !isDefined(action)) {
         //api ai could not evaluate input.
         console.log('Unknown query' + response.result.resolvedQuery);
-        sendTextMessage(sender, "I'm not sure what you want. Can you be more specific?");
+        sendTextMessage(sender, "¡Vaya! Aún no me han enseñado a entender lo que has escrito. Puedes hacer clic sobre cualquiera de los botones previos y si ninguno responde a tus dudas en este momento, uno de mis colegas humanos se pondrá en contacto contigo para ayudarte.");
     } else if (isDefined(action)) {
         handleApiAiAction(sender, action, responseText, contexts, parameters);
     } else if (isDefined(responseData) && isDefined(responseData.facebook)) {
