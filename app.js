@@ -207,29 +207,29 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             sendQuickReply(sender, responseText, replies);
 
             break;
-        case "your.service":
-            //sender_action();
-            sendTextMessage(sender, responseText);
-            sendTypingOn(sender);
+            // case "your.service":
+            //     //sender_action();
+            //     sendTextMessage(sender, responseText);
+            //     sendTypingOn(sender);
 
-            setTimeout(() => {
-                let buttons = [{
-                        type: "postback",
-                        title: "Continue",
-                        payload: "Continue"
-                    },
-                    {
-                        type: "postback",
-                        title: "Exit",
-                        payload: "Exit"
+            //     setTimeout(() => {
+            //         let buttons = [{
+            //                 type: "postback",
+            //                 title: "Continue",
+            //                 payload: "Continue"
+            //             },
+            //             {
+            //                 type: "postback",
+            //                 title: "Exit",
+            //                 payload: "Exit"
 
-                    }
-                ];
-                sendButtonMessage(sender, 'What would you like to do next?', buttons);
-            }, 3000)
+            //             }
+            //         ];
+            //         sendButtonMessage(sender, 'What would you like to do next?', buttons);
+            //     }, 3000)
 
 
-            break;
+            //     break;
 
         default:
             //unhandled action, just send back the text
@@ -767,22 +767,11 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
-        case "OUR_SERVICE":
-            // sendTypingOn();
-            // var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
-            // let button = [
-
-            //     {
-            //         type: "web_url",
-            //         url: "https://www.mediakia.com/servicios/",
-            //         title: "Nuestro servicio"
-            //     }
-            // ];
-
-            // sendButtonMessage(sender, message, button);
-            var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
-            sendTextMessage(senderID, message);
-            break;
+        // case "OUR_SERVICE":
+        //     sendTypingOn();
+        //     var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
+        //     sendTextMessage(senderID, message);
+        //     break;
 
         case "GET_STARTED":
             greetUserText(senderID);
