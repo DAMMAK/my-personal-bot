@@ -780,8 +780,13 @@ function receivedPostback(event) {
             ];
 
             // sendButtonMessage(sender, message, button);
-            sendTextMessage(recipientID, message);
+            sendTextMessage(senderID, message);
             break;
+
+        case 'GET_STARTED':
+            greetUserText(senderID);
+            break;
+
         default:
             //unindentified payload
             sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
