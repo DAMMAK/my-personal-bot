@@ -704,7 +704,7 @@ function greetUserText(userId) {
                 console.log("FB user: %s %s, %s",
                     user.first_name, user.last_name, user.gender);
 
-                sendTextMessage(userId, "Welcome " + user.first_name + '!');
+                sendTextMessage(userId, `Hola ${user_full_name}, ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?`);
             } else {
                 console.log("Cannot get data for fb user with id",
                     userId);
@@ -779,7 +779,8 @@ function receivedPostback(event) {
                 }
             ];
 
-            sendButtonMessage(sender, message, button);
+            // sendButtonMessage(sender, message, button);
+            sendTextMessage(recipientID, message);
             break;
         default:
             //unindentified payload
