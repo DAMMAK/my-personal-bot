@@ -767,10 +767,24 @@ function receivedPostback(event) {
     var payload = event.postback.payload;
 
     switch (payload) {
+        case "¿Qué servicios tenéis para mí? ":
+            sendTypingOn();
+            var message = "¡Qué bien que preguntes eso! Podemos ayudarte de muchas maneras. Haz clic en este enlace y descubre cómo podemos ayudarte a impulsar tu proyecto";
+            let button = [
+
+                {
+                    type: "web_url",
+                    url: "https://www.mediakia.com/servicios/",
+                    title: "Nuestro servicio"
+                }
+            ];
+
+            sendButtonMessage(sender, message, button);
+            break;
         default:
-        //unindentified payload
+            //unindentified payload
             sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
-        break;
+            break;
 
     }
 
