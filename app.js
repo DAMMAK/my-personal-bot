@@ -778,6 +778,7 @@ function receivedPostback(event) {
 
         case "GET_STARTED":
 
+            let display_message = 'Hola ' + user.first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?';
             let replies = [{
                     "content_type": "text",
                     "title": "¿Qué servicios tenéis para mí?",
@@ -796,7 +797,7 @@ function receivedPostback(event) {
                 }
             ];
 
-            sendQuickReply(senderID, recipientID, replies);
+            sendQuickReply(senderID, display_message, replies);
             //greetUserText(senderID);
             break;
 
