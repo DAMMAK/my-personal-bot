@@ -189,12 +189,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             let replies = [{
                     "content_type": "text",
                     "title": "¿Qué servicios tenéis para mí?",
-                    "payload": "OUR_SERVICE",
+                    "payload": "¿Qué servicios tenéis para mí?",
                 },
                 {
                     "content_type": "text",
                     "title": "¿Quiénes sois?",
-                    "payload": "WHO_ARE_YOU",
+                    "payload": "¿Quiénes sois?",
                 },
 
                 {
@@ -783,11 +783,9 @@ function receivedPostback(event) {
             greetUserText(senderID);
             break;
 
-        case "WHO_ARE_YOU":
-
+        case "¿Quiénes sois?":
 
             var message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
-            sendTypingOn();
 
             let button = [{
                 "type": "web_url",
