@@ -783,23 +783,6 @@ function receivedPostback(event) {
             greetUserText(senderID);
             break;
 
-        case "¿Quiénes sois?":
-
-            var message = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
-
-            // let button = [{
-            //     "type": "web_url",
-            //     "url": "https://www.mediakia.com/quienes-somos/",
-            //     "title": "quienes somos",
-            //     "webview_height_ratio": "full"
-            // }];
-
-            // sendButtonMessage(senderID, message, button);
-
-            sendTextMessage(senderID, message);
-
-            break;
-
         default:
             //unindentified payload
             sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
