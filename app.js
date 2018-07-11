@@ -186,25 +186,27 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
     switch (action) {
 
         case "input.welcome":
-            let replies = [{
-                    "content_type": "text",
-                    "title": "¿Qué servicios tenéis para mí?",
-                    "payload": "¿Qué servicios tenéis para mí?",
-                },
-                {
-                    "content_type": "text",
-                    "title": "¿Quiénes sois?",
-                    "payload": "¿Quiénes sois?",
-                },
+            // let replies = [{
+            //         "content_type": "text",
+            //         "title": "¿Qué servicios tenéis para mí?",
+            //         "payload": "¿Qué servicios tenéis para mí?",
+            //     },
+            //     {
+            //         "content_type": "text",
+            //         "title": "¿Quiénes sois?",
+            //         "payload": "¿Quiénes sois?",
+            //     },
 
-                {
-                    "content_type": "text",
-                    "title": "Me las apaño bien, ¡gracias!",
-                    "payload": "Me las apaño bien, ¡gracias!",
-                }
-            ];
+            //     {
+            //         "content_type": "text",
+            //         "title": "Me las apaño bien, ¡gracias!",
+            //         "payload": "Me las apaño bien, ¡gracias!",
+            //     }
+            // ];
 
-            sendQuickReply(sender, responseText, replies);
+            
+            // sendQuickReply(sender, responseText, replies);
+            getUser(sender);
             console.log(replies);
 
             break;
