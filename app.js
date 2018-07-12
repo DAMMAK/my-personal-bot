@@ -867,7 +867,7 @@ function receivedPostback(event) {
 
         case "Me las apaño bien, ¡gracias!":
 
-            let msg2 = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+            let msg2 = "En ese caso me mantendré callado. Recuerda que sigo aquí si más adelante necesitas mi ayuda. ¡Ten un feliz día!";
 
             sendTextMessage(senderID, msg2);
 
