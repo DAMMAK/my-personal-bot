@@ -221,7 +221,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                 },
                 {
                     "type": "postback",
-                    "title": "¿Cómo contrato vuestros servicios?",
+                    "title": "Contacto",
                     "payload": "¿Qué servicios tenéis para mí?"
                 },
                 {
