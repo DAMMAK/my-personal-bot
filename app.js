@@ -204,7 +204,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             //     }
             // ];
 
-            
+
             // sendQuickReply(sender, responseText, replies);
             getUser(sender);
             console.log(replies);
@@ -216,7 +216,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             let msg3 = "Veo que has estado leyendo un poco sobre nosotros 😊. Si puedo hacer algo más por ti, no dudes en pedírmelo";
             let button2 = [{
                     "type": "postback",
-                    "title": "¿Qué servicios tenéis para mí?",
+                    "title": "Vuestros servicios",
                     "payload": "¿Qué servicios puedes ofrecer?"
                 },
                 {
@@ -226,7 +226,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                 },
                 {
                     "type": "postback",
-                    "title": "Me las apaño bien, ¡gracias!",
+                    "title": "Ok, eso es todo",
                     "payload": "Me las apaño bien, ¡gracias!"
                 }
             ];
@@ -842,7 +842,7 @@ function receivedPostback(event) {
 
             let button = [{
                 "type": "web_url",
-                "url": "https://www.mediakia.com/servicios/",
+                "url": " http://www.mediakia.com/contacto/",
                 "title": "Nuestro servicio",
                 "webview_height_ratio": "full"
             }];
