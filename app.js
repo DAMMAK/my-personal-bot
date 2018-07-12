@@ -743,7 +743,7 @@ function getUser(userId) {
                 let display_message = 'Hola ' + user.first_name + ', ¡me alegro de verte por aquí! Soy Mediakín, el bot de MEDIAKIA y estoy aquí para ayudarte. ¿Puedo hacer algo por ti?';
                 let replies = [{
                         "content_type": "text",
-                        "title": "¿Qué servicios tenéis para mí?",
+                        "title": "Vuestros servicios",
                         "payload": "¿Qué servicios tenéis para mí?",
                     },
                     {
@@ -754,7 +754,7 @@ function getUser(userId) {
 
                     {
                         "content_type": "text",
-                        "title": "Me las apaño bien, ¡gracias!",
+                        "title": "Ok, eso es todo",
                         "payload": "Me las apaño bien, ¡gracias!",
                     }
                 ];
