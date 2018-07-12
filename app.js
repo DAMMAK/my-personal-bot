@@ -843,7 +843,7 @@ function receivedPostback(event) {
             let button = [{
                 "type": "web_url",
                 "url": " http://www.mediakia.com/contacto/",
-                "title": "Nuestro servicio",
+                "title": "Contáctenos",
                 "webview_height_ratio": "full"
             }];
 
