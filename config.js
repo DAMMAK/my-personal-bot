@@ -3,5 +3,5 @@ module.exports = {
     FB_VERIFY_TOKEN: 'developerdammak',
     API_AI_CLIENT_ACCESS_TOKEN: '0b2a32027b0445b1b1ab70182552d2d6',
     FB_APP_SECRET: '29db351c485f6daa23673105bb164efa',
-    SERVER_URL: "https://mediakia.herokuapp.com",
+    SERVER_URL: "https://bot.freelancingcare.com",
 };
