@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const uuid = require('uuid');
+var ypi = require('youtube-channel-videos');
 
 
 // Messenger API parameters
@@ -25,6 +26,9 @@ if (!config.FB_APP_SECRET) {
 }
 if (!config.SERVER_URL) { //used for ink to static files
     throw new Error('missing SERVER_URL');
+}
+if (!config.YOUTUBE_API_KEY) {
+    throw new Error('missing Youtube API KEY');
 }
 
 
@@ -186,54 +190,27 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
     switch (action) {
 
         case "input.welcome":
-            // let replies = [{
-            //         "content_type": "text",
-            //         "title": "¿Qué servicios tenéis para mí?",
-            //         "payload": "¿Qué servicios tenéis para mí?",
-            //     },
-            //     {
-            //         "content_type": "text",
-            //         "title": "¿Quiénes sois?",
-            //         "payload": "¿Quiénes sois?",
-            //     },
 
-            //     {
-            //         "content_type": "text",
-            //         "title": "Me las apaño bien, ¡gracias!",
-            //         "payload": "Me las apaño bien, ¡gracias!",
-            //     }
-            // ];
-
-
-            // sendQuickReply(sender, responseText, replies);
-            getUser(sender);
-            console.log(replies);
-
-            break;
-
-        case "who-are-you":
-
-            let msg3 = "Veo que has estado leyendo un poco sobre nosotros 😊. Si puedo hacer algo más por ti, no dudes en pedírmelo";
-            let button2 = [{
+            let welcome_message = "ফ্রিল্যান্সিং কেয়ার এর স্বয়ংক্রিয় তথ্য সেবা কেন্দ্রে  আপনাকে স্বাগতম । আপনার কোন ধরনের তথ্য সেবা প্রয়োজন তা অনুগ্রহ করে বাছাই করুন";
+            let wel_button = [{
                     "type": "postback",
-                    "title": "Vuestros servicios",
-                    "payload": "¿Qué servicios puedes ofrecer?"
+                    "title": "টিউটোরিয়াল",
+                    "payload": "টিউটোরিয়াল"
                 },
                 {
                     "type": "postback",
-                    "title": "Contacto",
-                    "payload": "¿Qué servicios tenéis para mí?"
+                    "title": "গাইডলাইন",
+                    "payload": "গাইডলাইন"
                 },
                 {
                     "type": "postback",
-                    "title": "Ok, eso es todo",
-                    "payload": "Me las apaño bien, ¡gracias!"
+                    "title": "যোগাযোগ",
+                    "payload": "যোগাযোগ"
                 }
             ];
-
-            sendButtonMessage(sender, msg3, button2);
-
-
+            sendButtonMessage(sender, welcome_message, wel_button);
+            //TODO Load Youtube Videos into Card
+            videoCards(sender);
             break;
 
         default:
@@ -836,44 +813,133 @@ function receivedPostback(event) {
             //greetUserText(senderID);
             break;
 
-        case "¿Cómo contrato vuestros servicios?":
+        case "টিউটোরিয়াল":
 
-            let message = "¡Fácil! Puedes contactar con nosotros a través del apartado Contacto de nuestra página y un colega humano se pondrá en contacto contigo muy pronto";
+            let message = "আমাদের টিউটোরিয়াল ফ্রী তে সবার আগে পেতে ইউটিউব চ্যানেল টি তে  সাবস্ক্রাইব ক";
 
             let button = [{
                 "type": "web_url",
-                "url": " http://www.mediakia.com/contacto/",
-                "title": "Contáctenos",
-                "webview_height_ratio": "full"
+                "title": "সাবস্ক্রাইব করুন",
+                "url": "http://bit.ly/freelancingcare"
             }];
+            sendTextMessage(senderID, "ফ্রিল্যান্সিং কেয়ার এর সকল টিউটোরিয়াল বিনামূল্যে ইউটিউব থেকে ডাউনলোড করে নিতে পারেন ।");
+            setTimeout(() => {
+                sendButtonMessage(senderID, message, button);
+            }, 1000);
 
-            sendButtonMessage(senderID, message, button);
+            //TODO Load Youtube Videos into Cards
 
             break;
 
-        case "¿Que eres?":
-            let msg1 = "¡Yo soy Mediakín, el bot parlanchín! Trabajo en el departamento de soporte de MEDIAKIA y según dicen cada vez lo hago mejor. Si quieres conocer a mis colegas humanos, puedes hacer clic en este enlace";
+        case "গাইডলাইন":
+            let msg01 = "আপনার কোন বিষয়ে গাইডলাইন প্রয়োজন ?";
+            let button_001 = [{
+                    "type": "postback",
+                    "title": "ফ্রিল্যান্সিং",
+                    "payload": "ফ্রিল্যান্সিং"
+                },
+                {
+                    "type": "postback",
+                    "title": "ওয়েব ডেভেলপমেন্ট",
+                    "payload": "ওয়েব ডেভেলপমেন্ট"
+                },
+                {
+                    "type": "postback",
+                    "title": "গ্রাফিক্স ডিজাইন",
+                    "payload": "গ্রাফিক্স ডিজাইন"
+                }
+            ];
+            sendButtonMessage(senderID, msg01, button_001);
 
-            let button1 = [{
+            //TODO Load Youtube Video into Cards
+
+            break;
+
+        case "ফ্রিল্যান্সিং":
+
+            let msg02 = "ফ্রিল্যান্সিং বিষয়ে আমাদের ইউটিউব চ্যানেলটিতে একটি পুর্ণাঙ্গ ভিডিও সিরিজ প্লেলিস্ট আকারে রয়েছে। \n আপনি কি সেটি দেখেছিলেন?";
+            let button_002 = [{
+                    "type": "postback",
+                    "title": "হ্যাঁ দেখেছি",
+                    "payload": "হ্যাঁ দেখেছি"
+                },
+                {
+                    "type": "postback",
+                    "title": "না দেখিনি",
+                    "payload": "না দেখিনি"
+                }
+
+            ];
+            sendButtonMessage(senderID, msg02, button_002);
+
+            break;
+
+        case "হ্যাঁ দেখেছি":
+            sendTextMessage(senderID, "আপনি কোন ভিডিও গুলো দেখেছেন জানি না, আমি https://www.youtube.com/playlist?list=PLbsixBK6B5e79n-omue3wCAIdwrZhdk3e এই ভিডিও প্লেলিস্ট টির কথা বলেছিলাম।");
+
+            //Todo Load Youtube Videos into Card
+
+            sendTextMessage(senderID, "এটি যদি দেখে থাকেন তাহলে আপনার শেখার পেছনে সময় ব্যয় করা উচিত। আপনি ইতোমধ্যে আশা করি পরিস্কার ধারণা পেয়ে গেছেন ফ্রিল্যান্সিং সম্পর্কে।");
+
+            let msg03 = "আমাদের টিউটোরিয়াল ফ্রী তে সবার আগে পেতে ইউটিউব চ্যানেল টি তে  সাবস্ক্রাইব করুন";
+
+            let button_003 = [{
                 "type": "web_url",
-                "url": "https://www.mediakia.com/quienes-somos/",
-                "title": "¡Quién soy!",
-                "webview_height_ratio": "full"
+                "title": "সাবস্ক্রাইব করুন",
+                "url": "http://bit.ly/freelancingcare"
             }];
 
-            sendButtonMessage(senderID, msg1, button1);
-
+            sendButtonMessage(senderID, msg03, button_003);
             break;
 
-        case "Me las apaño bien, ¡gracias!":
+        case "না দেখিনি":
+            let msg04 = "আপনি প্রথমে নিচের  প্লেলিস্ট লিংকটি তে ক্লিক করে ভিডিও গুলো দেখে নিন।";
 
-            let msg2 = "En ese caso me mantendré callado. Recuerda que sigo aquí si más adelante necesitas mi ayuda. ¡Ten un feliz día!";
+            let button_004 = [{
+                "type": "web_url",
+                "title": "প্লেলিস্ট লিংক",
+                "url": "https://www.youtube.com/playlist?list=PLbsixBK6B5e79n-omue3wCAIdwrZhdk3e"
+            }];
 
-            sendTextMessage(senderID, msg2);
+            sendButtonMessage(senderID, msg04, button_004);
 
+            //TODO Load Youtube Videos into Cards
+
+            let msg05 = "আমাদের টিউটোরিয়াল ফ্রী তে সবার আগে পেতে ইউটিউব চ্যানেল টি তে  সাবস্ক্রাইব করুন";
+
+            let button_005 = [{
+                "type": "web_url",
+                "title": "সাবস্ক্রাইব করুন",
+                "url": "http://bit.ly/freelancingcare"
+            }];
+
+            sendButtonMessage(senderID, msg05, button_005);
             break;
 
+        case "যোগাযোগ":
+            let msg06 = "আমাদের সাথে যোগাযোগ এর জন্য ইমেইল করতে পারেন contact@freelancingcare.com এই ঠিকানায়। অথবা ফোন করতে পারেন ০১৭৩৬২২০২০০";
 
+            let button_006 = [{
+                "type": "phone_number",
+                "title": "Call Now",
+                "payload": "+78839903"
+            }];
+
+            sendButtonMessage(senderID, msg06, button_006);
+
+            let msg07 = "আমাদের টিউটোরিয়াল ফ্রী তে সবার আগে পেতে ইউটিউব চ্যানেল টি তে  সাবস্ক্রাইব করুন";
+
+            let button_007 = [{
+                "type": "web_url",
+                "title": "সাবস্ক্রাইব করুন",
+                "url": "http://bit.ly/freelancingcare"
+            }];
+
+            sendButtonMessage(senderID, msg07, button_007);
+
+
+
+            break;
 
         default:
             //unindentified payload
@@ -1019,6 +1085,37 @@ function isDefined(obj) {
 
     return obj != null;
 }
+
+var videoCards = (sender) => {
+    let data = [];
+    ypi.channelVideos(config.YOUTUBE_API_KEY, config.YOUTUBE_CHANNEL_ID, function(channelItems) {
+        channelItems.forEach(element => {
+            console.log("Video Title: ", element.snippet.title);
+            console.log("Video ID: ", element.id.videoId);
+            var video_link = "https://www.youtube.com/watch?v=" + element.id.videoId;
+            console.log("Video Thumbnail: ", element.snippet.thumbnails.default.url);
+            var message = {
+                title: element.snippet.title,
+                subtitle: "",
+                image_url: element.snippet.thumbnails.default.url,
+                buttons: [{
+                    "type": "web_url",
+                    "title": "View on Web",
+                    "url": video_link
+                }],
+
+            }
+
+            data.push(message);
+        });
+    });
+
+    console.log(data);
+    handleCardMessages(data, sender);
+
+
+}
+
 
 // Spin up the server
 app.listen(app.get('port'), function() {
